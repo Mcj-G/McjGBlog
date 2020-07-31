@@ -62,4 +62,13 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Views" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\Category.sql" />
+    <Build Include="dbo\Tables\Post.sql" />
+    <Build Include="dbo\Tables\Comment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Publish Locations\SQLData.publish.xml" />
+  </ItemGroup>
 </Project>
