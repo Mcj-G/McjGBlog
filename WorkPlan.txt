@@ -1,0 +1,17 @@
+
+
+Blg Ideas:
+- user modifications - adding name to existig email addres (on registered user) and storing data in BlogDB
+- Obvious - creating and viewing posts and coments
+- Saving and loading data from DB
+- creating posts only for admin of blog (adding two roles - admin and "normal user")
+- make a good layout
+
+Work plan:
+- create views for Post and Comment creations (Create, Edit, Delete)
+- makeing stored procedures in DB for inserting,loading, modifying and deleting data
+- create data access background in the library - lading, saving, modifying and deleting methods
+- create views and data access background for modify and store user info
+
+
+And that is not the end... TBC
