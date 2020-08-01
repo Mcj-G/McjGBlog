@@ -1,8 +1,39 @@
-﻿@{
+﻿@model IEnumerable<PostModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1 class="display-1">Posts:</h1>
+@foreach (var post in Model)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(post => post.AuthorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(post => post.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(post => post.CategoryId)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => post.AuthorId)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => post.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => post.CategoryId)
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <h1>@Html.DisplayFor(modelItem => post.Title)</h1>
+    <p class="text-justify">@Html.DisplayFor(modelItem => post.Content)</p>
+}

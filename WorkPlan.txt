@@ -15,3 +15,20 @@ Work plan:
 
 
 And that is not the end... TBC
+
+
+
+Views to make:
+Make index view display posts
+
+Create post-
+Edit post
+Delete post
+Create comment-
+Edit comment
+Delete comment
+
+
+Management view:
+Category manage
+User info edit

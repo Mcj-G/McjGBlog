@@ -23,7 +23,22 @@ namespace BlogMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var posts = _postProcessor.LoadPosts();
+            List<PostModel> postModels = new List<PostModel>();
+            foreach (var post in posts)
+            {
+                postModels.Add(new PostModel
+                {
+                    Id = post.Id,
+                    AuthorId = post.AuthorId,
+                    Title = post.Title,
+                    Content = post.Content,
+                    CreatedDate = post.CreatedDate,
+                    CategoryId = post.CategoryId
+                }); 
+            }
+
+            return View(postModels);
         }
 
         public IActionResult Privacy()

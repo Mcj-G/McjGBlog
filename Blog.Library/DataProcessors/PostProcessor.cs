@@ -36,7 +36,7 @@ namespace Blog.Library.DataProcessors
 
         public List<PostModel> LoadPosts()
         {
-            throw new NotImplementedException();
+            return _sql.LoadData<PostModel, dynamic>("dbo.spPost_GetAll", new { }, "SQLData");
         }
     }
 }
