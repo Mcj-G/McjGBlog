@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlogMVC.Models;
+using Blog.Library.DataProcessors;
 
 namespace BlogMVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPostProcessor _postProcessor;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPostProcessor postProcessor)
         {
             _logger = logger;
+            _postProcessor = postProcessor;
         }
 
         public IActionResult Index()
@@ -42,7 +45,7 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public IActionResult CreatePost(PostModel model)
         {
-            //TODO - makeing this work
+            _postProcessor.CreatePost(model.Title, model.Content, model.CategoryId);
             return RedirectToAction("Index");
         }
 
@@ -54,7 +57,7 @@ namespace BlogMVC.Controllers
         [HttpPost]
         public IActionResult CreateComment(CommentModel model)
         {
-            //TODO - makeing this work
+            //TODO - make this work
             return RedirectToAction("Index");
         }
     }

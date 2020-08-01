@@ -67,6 +67,7 @@
     <Build Include="dbo\Tables\Category.sql" />
     <Build Include="dbo\Tables\Post.sql" />
     <Build Include="dbo\Tables\Comment.sql" />
+    <Build Include="dbo\Stored Procedures\spPost_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Locations\SQLData.publish.xml" />

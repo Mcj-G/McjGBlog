@@ -12,6 +12,8 @@ using BlogMVC.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Blog.Library.DataAccess;
+using Blog.Library.DataProcessors;
 
 namespace BlogMVC
 {
@@ -34,6 +36,11 @@ namespace BlogMVC
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            // Personal sevices
+            services.AddHttpContextAccessor();
+            services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+            services.AddTransient<IPostProcessor, PostProcessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
