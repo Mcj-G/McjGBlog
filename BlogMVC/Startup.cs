@@ -41,6 +41,7 @@ namespace BlogMVC
             services.AddHttpContextAccessor();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
             services.AddTransient<IPostProcessor, PostProcessor>();
+            services.AddTransient<IUserProcessor, UserProcessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

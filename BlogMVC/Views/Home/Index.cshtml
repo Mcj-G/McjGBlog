@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PostModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "McjG Blog - Main Page";
 }
 
 <h1 class="display-1">Posts:</h1>
@@ -36,4 +36,5 @@
     </table>
     <h1>@Html.DisplayFor(modelItem => post.Title)</h1>
     <p class="text-justify">@Html.DisplayFor(modelItem => post.Content)</p>
+    <span class="d-block p-2 bg-primary text-white mb-5"></span>
 }

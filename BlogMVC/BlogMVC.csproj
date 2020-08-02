@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Blog.Library\Blog.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Category\" />
+  </ItemGroup>
+
 </Project>

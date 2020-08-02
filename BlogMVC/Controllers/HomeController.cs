@@ -51,29 +51,5 @@ namespace BlogMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public IActionResult CreatePost()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreatePost(PostModel model)
-        {
-            _postProcessor.CreatePost(model.Title, model.Content, model.CategoryId);
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult CreateComment()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateComment(CommentModel model)
-        {
-            //TODO - make this work
-            return RedirectToAction("Index");
-        }
     }
 }

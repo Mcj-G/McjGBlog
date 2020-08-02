@@ -1,0 +1,55 @@
+﻿@model BlogMVC.Models.UserModel
+
+@{
+    ViewData["Title"] = "ManageUserData";
+}
+
+@{string name = "";
+    if (Model != null)
+    {
+        name = Model.FirstName;
+    }
+    else
+    {
+        name = "User";
+    }
+}
+<h1>ManageUserData</h1>
+
+<h4>UserModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ManageUserData">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Welcome @name! Change your name</label>
+                @{if (User.Identity.IsAuthenticated == false)
+                    {
+                        <p>Here you can set up or change your name.</p>
+                    }
+                    else
+                    {
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    }
+                }
+
+            </div>
+            <div class="form-group">
+                @if (User.Identity.IsAuthenticated)
+	            {
+                    <input type="submit" value="Update" class="btn btn-primary" />
+	            }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to Main Page</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
