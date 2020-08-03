@@ -22,6 +22,7 @@ Views to make:
 Make index view display posts
 
 Create post-
+View one post
 Edit post
 Delete post
 Create comment-
@@ -31,4 +32,4 @@ Delete comment
 
 Management view:
 Category manage
-User info edit
+User info edit-

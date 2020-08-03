@@ -38,5 +38,10 @@ namespace Blog.Library.DataProcessors
         {
             return _sql.LoadData<PostModel, dynamic>("dbo.spPost_GetAll", new { }, "SQLData");
         }
+
+        public List<PostModel> LoadPostById(int postId)
+        {
+            return _sql.LoadData<PostModel, dynamic>("dbo.spPost_GetById", new { Id = postId }, "SQLData");
+        }
     }
 }

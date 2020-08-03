@@ -7,5 +7,6 @@ namespace Blog.Library.DataProcessors
     {
         void CreatePost(string title, string content, int categoryId);
         List<PostModel> LoadPosts();
+        List<PostModel> LoadPostById(int postId);
     }
 }

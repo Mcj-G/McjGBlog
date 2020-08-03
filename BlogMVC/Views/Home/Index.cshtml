@@ -36,5 +36,6 @@
     </table>
     <h1>@Html.DisplayFor(modelItem => post.Title)</h1>
     <p class="text-justify">@Html.DisplayFor(modelItem => post.Content)</p>
+    @Html.ActionLink("View post", "ViewPost", "Post", new { postId = post.Id })
     <span class="d-block p-2 bg-primary text-white mb-5"></span>
 }

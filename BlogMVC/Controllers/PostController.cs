@@ -30,5 +30,21 @@ namespace BlogMVC.Controllers
             _postProcessor.CreatePost(model.Title, model.Content, model.CategoryId);
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult ViewPost(int postId)
+        {
+            var load = _postProcessor.LoadPostById(postId).FirstOrDefault();
+            PostModel post = new PostModel
+            {
+                Id = load.Id,
+                AuthorId = load.AuthorId,
+                Title = load.Title,
+                Content = load.Content,
+                CreatedDate = load.CreatedDate,
+                CategoryId = load.CategoryId
+            };
+
+            return View(post);
+        }
     }
 }
