@@ -46,5 +46,12 @@ namespace BlogMVC.Controllers
 
             return View(post);
         }
+
+        public IActionResult DeletePost(int postId)
+        {
+            _postProcessor.DeletePost(postId);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
