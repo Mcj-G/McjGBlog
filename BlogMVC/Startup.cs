@@ -43,6 +43,7 @@ namespace BlogMVC
             services.AddTransient<IPostProcessor, PostProcessor>();
             services.AddTransient<IUserProcessor, UserProcessor>();
             services.AddTransient<ICommentProcessor, CommentProcessor>();
+            services.AddTransient<ICategoryProcessor, CategoryProcessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,6 +8,8 @@ namespace BlogMVC.Models.DisplayModels
 {
     public class PostDisplayModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "Author:")]
         public string AuthorName { get; set; }
         public string Title { get; set; }
@@ -18,6 +20,6 @@ namespace BlogMVC.Models.DisplayModels
 
         [Display(Name = "Categoty:")]
         public int CategoryName { get; set; }
-        public List<CommentModel> Comments { get; set; }
+        public List<CommentDisplayModel> Comments { get; set; }
     }
 }

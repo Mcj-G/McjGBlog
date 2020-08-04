@@ -13,15 +13,31 @@ namespace BlogMVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IPostProcessor _postProcessor;
+        private readonly ICategoryProcessor _categoryProcessor;
 
-        public PostController(ILogger<HomeController> logger, IPostProcessor postProcessor)
+        public PostController(ILogger<HomeController> logger, IPostProcessor postProcessor,
+            ICategoryProcessor categoryProcessor)
         {
             _logger = logger;
             _postProcessor = postProcessor;
+            _categoryProcessor = categoryProcessor;
         }
         public IActionResult CreatePost()
         {
-            return View();
+            var load = _categoryProcessor.LoadCategories();
+            PostModel model = new PostModel();
+            List<CategoryModel> list = new List<CategoryModel>();
+            foreach (var category in load)
+            {
+                CategoryModel categoryModel = new CategoryModel();
+                categoryModel.Id = category.Id;
+                categoryModel.Name = category.Name;
+
+                list.Add(categoryModel);
+            }
+
+            model.CategoryList = list;
+            return View(model);
         }
 
         [HttpPost]

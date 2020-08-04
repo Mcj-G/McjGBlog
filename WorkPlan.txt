@@ -22,9 +22,9 @@ Views to make:
 Make index view display posts
 
 Create post-
-View one post
+View one post-
 Edit post
-Delete post
+Delete post-
 Create comment-
 Edit comment
 Delete comment

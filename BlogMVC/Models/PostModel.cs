@@ -20,5 +20,7 @@ namespace BlogMVC.Models
 
         [Display(Name = "Categoty:")]
         public int CategoryId { get; set; }
+
+        public List<CategoryModel> CategoryList { get; set; } // TODO - try it out
     }
 }
