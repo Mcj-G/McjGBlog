@@ -43,7 +43,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |
+    @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id }) |
     @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');" })
 </div>
