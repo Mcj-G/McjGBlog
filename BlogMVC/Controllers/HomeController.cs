@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlogMVC.Models;
 using Blog.Library.DataProcessors;
+using BlogMVC.Models.DisplayModels;
 
 namespace BlogMVC.Controllers
 {
@@ -24,18 +25,27 @@ namespace BlogMVC.Controllers
         public IActionResult Index()
         {
             var posts = _postProcessor.LoadPosts();
-            List<PostModel> postModels = new List<PostModel>();
+            List<PostDisplayModel> postModels = new List<PostDisplayModel>();
             foreach (var post in posts)
             {
-                postModels.Add(new PostModel
+                postModels.Add(new PostDisplayModel
                 {
                     Id = post.Id,
-                    AuthorId = post.AuthorId,
+                    AuthorName = post.AuthorName,
                     Title = post.Title,
                     Content = post.Content,
                     CreatedDate = post.CreatedDate,
-                    CategoryId = post.CategoryId
-                }); 
+                    CategoryName = post.CategoryName
+                });
+                //postModels.Add(new PostModel
+                //{
+                //    Id = post.Id,
+                //    AuthorId = post.AuthorId,
+                //    Title = post.Title,
+                //    Content = post.Content,
+                //    CreatedDate = post.CreatedDate,
+                //    CategoryId = post.CategoryId
+                //}); 
             }
 
             return View(postModels);

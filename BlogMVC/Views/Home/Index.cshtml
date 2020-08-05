@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PostModel>
+﻿@model IEnumerable<BlogMVC.Models.DisplayModels.PostDisplayModel>
 @{
     ViewData["Title"] = "McjG Blog - Main Page";
 }
@@ -10,26 +10,26 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(post => post.AuthorId)
+                    @Html.DisplayNameFor(post => post.AuthorName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(post => post.CreatedDate)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(post => post.CategoryId)
+                    @Html.DisplayNameFor(post => post.CategoryName)
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th>
-                    @Html.DisplayFor(modelItem => post.AuthorId)
+                    @Html.DisplayFor(modelItem => post.AuthorName)
                 </th>
                 <th>
                     @Html.DisplayFor(modelItem => post.CreatedDate)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelItem => post.CategoryId)
+                    @Html.DisplayFor(modelItem => post.CategoryName)
                 </th>
             </tr>
         </tbody>

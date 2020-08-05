@@ -6,7 +6,7 @@ namespace Blog.Library.DataProcessors
     public interface IPostProcessor
     {
         void CreatePost(string title, string content, int categoryId);
-        List<PostModel> LoadPosts();
+        List<PostDisplayModel> LoadPosts();
         List<PostModel> LoadPostById(int postId);
         void DeletePost(int postId);
     }

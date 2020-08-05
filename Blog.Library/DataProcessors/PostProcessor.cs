@@ -34,9 +34,9 @@ namespace Blog.Library.DataProcessors
             _sql.SaveData("dbo.spPost_Insert", data, "SQLData");
         }
 
-        public List<PostModel> LoadPosts()
+        public List<PostDisplayModel> LoadPosts()
         {
-            return _sql.LoadData<PostModel, dynamic>("dbo.spPost_GetAll", new { }, "SQLData");
+            return _sql.LoadData<PostDisplayModel, dynamic>("dbo.spPost_GetAll", new { }, "SQLData");
         }
 
         public List<PostModel> LoadPostById(int postId)

@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace BlogMVC.Models.DisplayModels
+namespace Blog.Library.Models
 {
     public class PostDisplayModel
     {
         public int Id { get; set; }
-
-        [Display(Name = "Author:")]
         public string AuthorName { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-
-        [Display(Name = "Created:")]
         public DateTime CreatedDate { get; set; }
-
-        [Display(Name = "Categoty:")]
         public string CategoryName { get; set; }
         public List<CommentDisplayModel> Comments { get; set; }
     }
