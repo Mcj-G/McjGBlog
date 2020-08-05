@@ -4,8 +4,10 @@ AS
 begin
 	set nocount on;
 
-	select [Id], [AuthorId], [Title], [Content], [CreatedDate], [CategoryId]
-	from dbo.Post
-	where Id = @Id;
+	select [p].[Id], [u].[FirstName] as AuthorName, [p].[Title], [p].[Content], [p].[CreatedDate], [c].[Name] as CategoryName
+	from (([dbo].[Post] as [p]
+	inner join [dbo].[User] as [u] on [p].[AuthorId] = [u].[Id])
+	inner join [dbo].[Category] as [c] on [p].[CategoryId] =  [c].[Id])
+	where [p].[Id] = @Id;
 	
 end

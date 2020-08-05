@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.Library.DataProcessors;
 using BlogMVC.Models;
+using BlogMVC.Models.DisplayModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -14,13 +15,15 @@ namespace BlogMVC.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IPostProcessor _postProcessor;
         private readonly ICategoryProcessor _categoryProcessor;
+        private readonly ICommentProcessor _commentProcessor;
 
         public PostController(ILogger<HomeController> logger, IPostProcessor postProcessor,
-            ICategoryProcessor categoryProcessor)
+            ICategoryProcessor categoryProcessor, ICommentProcessor commentProcessor)
         {
             _logger = logger;
             _postProcessor = postProcessor;
             _categoryProcessor = categoryProcessor;
+            _commentProcessor = commentProcessor;
         }
         public IActionResult CreatePost()
         {
@@ -49,16 +52,43 @@ namespace BlogMVC.Controllers
 
         public IActionResult ViewPost(int postId)
         {
-            var load = _postProcessor.LoadPostById(postId).FirstOrDefault();
-            PostModel post = new PostModel
+            var loadPost = _postProcessor.LoadPostById(postId).FirstOrDefault();
+            var loadComments = _commentProcessor.LoadComments(postId).OrderByDescending(x => x.CreatedDate);
+            PostDisplayModel post = new PostDisplayModel
             {
-                Id = load.Id,
-                AuthorId = load.AuthorId,
-                Title = load.Title,
-                Content = load.Content,
-                CreatedDate = load.CreatedDate,
-                CategoryId = load.CategoryId
+                Id = loadPost.Id,
+                AuthorName = loadPost.AuthorName,
+                Title = loadPost.Title,
+                Content = loadPost.Content,
+                CreatedDate = loadPost.CreatedDate,
+                CategoryName = loadPost.CategoryName
             };
+
+            List<CommentDisplayModel> commentList = new List<CommentDisplayModel>();
+
+            foreach (var comment in loadComments)
+            {
+                CommentDisplayModel model = new CommentDisplayModel
+                {
+                    Id = comment.Id,
+                    PostId = comment.PostId,
+                    UserName = comment.UserName,
+                    Content = comment.Content,
+                    CreatedDate = comment.CreatedDate
+                };
+                commentList.Add(model);
+            }
+
+            post.Comments = commentList;
+            //PostModel post = new PostModel
+            //{
+            //    Id = load.Id,
+            //    AuthorId = load.AuthorId,
+            //    Title = load.Title,
+            //    Content = load.Content,
+            //    CreatedDate = load.CreatedDate,
+            //    CategoryId = load.CategoryId
+            //};
 
             return View(post);
         }

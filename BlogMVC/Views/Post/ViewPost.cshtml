@@ -1,4 +1,4 @@
-﻿@model BlogMVC.Models.PostModel
+﻿@model BlogMVC.Models.DisplayModels.PostDisplayModel
  
 @{
     ViewData["Title"] = "ViewPost";
@@ -10,37 +10,68 @@
     <h4>PostModel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AuthorId)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AuthorId)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuthorName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Content)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryId)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CategoryId)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
     </dl>
+    @foreach (var comment in Model.Comments)
+    {
+        <span class="d-block p-2 bg-primary text-white mb-5"></span>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(modelItem => comment.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(modelItem => comment.CreatedDate)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => comment.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => comment.CreatedDate)
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+    }
+    <span class="d-block p-2 bg-primary text-white mb-5"></span>
 </div>
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |

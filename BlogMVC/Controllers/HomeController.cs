@@ -24,7 +24,7 @@ namespace BlogMVC.Controllers
 
         public IActionResult Index()
         {
-            var posts = _postProcessor.LoadPosts();
+            var posts = _postProcessor.LoadPosts().OrderByDescending(x => x.CreatedDate);
             List<PostDisplayModel> postModels = new List<PostDisplayModel>();
             foreach (var post in posts)
             {

@@ -39,9 +39,9 @@ namespace Blog.Library.DataProcessors
             return _sql.LoadData<PostDisplayModel, dynamic>("dbo.spPost_GetAll", new { }, "SQLData");
         }
 
-        public List<PostModel> LoadPostById(int postId)
+        public List<PostDisplayModel> LoadPostById(int postId)
         {
-            return _sql.LoadData<PostModel, dynamic>("dbo.spPost_GetById", new { Id = postId }, "SQLData");
+            return _sql.LoadData<PostDisplayModel, dynamic>("dbo.spPost_GetById", new { Id = postId }, "SQLData");
         }
 
         public void DeletePost(int postId)

@@ -27,5 +27,10 @@ namespace Blog.Library.DataProcessors
             _sql.SaveData("dbo.spComment_Insert", model, "SQLData");
         }
 
+        public List<CommentDisplayModel> LoadComments(int postId)
+        {
+            return _sql.LoadData<CommentDisplayModel, dynamic>("dbo.spComment_GetAllByPostId", new { PostId = postId }, "SQLData");
+        }
+
     }
 }
