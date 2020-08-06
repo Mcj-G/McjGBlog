@@ -8,6 +8,7 @@ namespace Blog.Library.DataProcessors
         void CreatePost(string title, string content, int categoryId);
         List<PostDisplayModel> LoadPosts();
         List<PostDisplayModel> LoadPostById(int postId);
+        void EditPost(int postId, string title, string content);
         void DeletePost(int postId);
     }
 }

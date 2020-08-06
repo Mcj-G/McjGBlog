@@ -93,6 +93,28 @@ namespace BlogMVC.Controllers
             return View(post);
         }
 
+        public IActionResult EditPost(int postId)
+        {
+            var loadPost = _postProcessor.LoadPostById(postId).FirstOrDefault();
+            PostDisplayModel post = new PostDisplayModel
+            {
+                Id = loadPost.Id,
+                AuthorName = loadPost.AuthorName,
+                Title = loadPost.Title,
+                Content = loadPost.Content,
+                CreatedDate = loadPost.CreatedDate,
+                CategoryName = loadPost.CategoryName
+            };
+            return View(post);
+        }
+
+        [HttpPost]
+        public IActionResult EditPost(PostDisplayModel model)
+        {
+            _postProcessor.EditPost(model.Id, model.Title, model.Content);
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult DeletePost(int postId)
         {
             _postProcessor.DeletePost(postId);

@@ -44,6 +44,11 @@ namespace Blog.Library.DataProcessors
             return _sql.LoadData<PostDisplayModel, dynamic>("dbo.spPost_GetById", new { Id = postId }, "SQLData");
         }
 
+        public void EditPost(int postId, string title, string content)
+        {
+            _sql.SaveData("dbo.spPost_Update", new { Id = postId, Title = title, Content = content }, "SQLData");
+        }
+
         public void DeletePost(int postId)
         {
             _sql.DeleteData("dbo.spPost_Delete", new { Id = postId }, "SQLData");
