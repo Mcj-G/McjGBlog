@@ -7,5 +7,6 @@ namespace Blog.Library.DataProcessors
     {
         void CreateComment(int postId, string userId, string content);
         List<CommentDisplayModel> LoadComments(int postId);
+        void DeleteComment(int commentId);
     }
 }

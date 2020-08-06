@@ -32,5 +32,9 @@ namespace Blog.Library.DataProcessors
             return _sql.LoadData<CommentDisplayModel, dynamic>("dbo.spComment_GetAllByPostId", new { PostId = postId }, "SQLData");
         }
 
+        public void DeleteComment(int commentId)
+        {
+            _sql.DeleteData("dbo.spComment_Delete", new { Id = commentId }, "SQLData");
+        }
     }
 }

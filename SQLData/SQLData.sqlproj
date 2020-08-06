@@ -78,6 +78,7 @@
     <Build Include="dbo\Stored Procedures\spCategory_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spComment_GetAllByPostId.sql" />
     <Build Include="dbo\Stored Procedures\spPost_Update.sql" />
+    <Build Include="dbo\Stored Procedures\spComment_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Locations\SQLData.publish.xml" />

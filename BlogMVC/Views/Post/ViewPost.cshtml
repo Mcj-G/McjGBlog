@@ -70,8 +70,10 @@
             </tbody>
         </table>
         <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+        @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
     }
     <span class="d-block p-2 bg-primary text-white mb-5"></span>
+
 </div>
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |

@@ -43,5 +43,12 @@ namespace BlogMVC.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult DeleteComment(int commentId)
+        {
+            _commentProcessor.DeleteComment(commentId);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
