@@ -23,11 +23,10 @@ Make index view display posts
 
 Create post-
 View one post-
-Edit post
+Edit post-
 Delete post-
 Create comment-
-Edit comment
-Delete comment
+Delete comment-
 
 
 Management view:

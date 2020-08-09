@@ -44,6 +44,19 @@
             @Html.DisplayNameFor(model => model.Comments)
         </dt>
     </dl>
+    <div>
+        <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |
+        @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id })
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            <div>
+                @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }) |
+                @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');" })
+            </div>
+        }
+
+    </div>
+    <h4>Comments:</h4>
     @foreach (var comment in Model.Comments)
     {
         <span class="d-block p-2 bg-primary text-white mb-5"></span>
@@ -70,14 +83,12 @@
             </tbody>
         </table>
         <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
-        @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
+        }
     }
     <span class="d-block p-2 bg-primary text-white mb-5"></span>
 
 </div>
-<div>
-    <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |
-    @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }) |
-    @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id }) |
-    @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');" })
-</div>
+

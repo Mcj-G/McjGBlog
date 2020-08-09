@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Blog.Library.DataProcessors;
 using BlogMVC.Models;
 using BlogMVC.Models.DisplayModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -25,6 +26,8 @@ namespace BlogMVC.Controllers
             _categoryProcessor = categoryProcessor;
             _commentProcessor = commentProcessor;
         }
+
+        [Authorize(Roles ="Admin")]
         public IActionResult CreatePost()
         {
             var load = _categoryProcessor.LoadCategories();
@@ -43,6 +46,7 @@ namespace BlogMVC.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult CreatePost(PostModel model)
         {
@@ -93,6 +97,7 @@ namespace BlogMVC.Controllers
             return View(post);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult EditPost(int postId)
         {
             var loadPost = _postProcessor.LoadPostById(postId).FirstOrDefault();
@@ -108,6 +113,7 @@ namespace BlogMVC.Controllers
             return View(post);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult EditPost(PostDisplayModel model)
         {
@@ -115,6 +121,7 @@ namespace BlogMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeletePost(int postId)
         {
             _postProcessor.DeletePost(postId);
