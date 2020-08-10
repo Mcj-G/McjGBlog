@@ -1,13 +1,18 @@
 ﻿@model BlogMVC.Models.DisplayModels.PostDisplayModel
- 
+
 @{
-    ViewData["Title"] = "ViewPost";
+    ViewData["Title"] = $"{ Model.Title }";
 }
 
-<h1>ViewPost</h1>
-
 <div>
-    <h4>PostModel</h4>
+    <h2>@Model.Title</h2>
+    <p>Category: @Html.DisplayFor(model => model.CategoryName)</p>
+    <hr />
+
+    <div class="font-weight-normal">
+        @Html.DisplayFor(model => model.Content)
+    </div>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -17,32 +22,11 @@
             @Html.DisplayFor(model => model.AuthorName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Comments)
-        </dt>
     </dl>
     <div>
         <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |
