@@ -1,41 +1,34 @@
 ﻿@model IEnumerable<BlogMVC.Models.DisplayModels.PostDisplayModel>
 @{
     ViewData["Title"] = "McjG Blog - Main Page";
+    ViewData["Image"] = "home-bg.jpg";
+    ViewData["Header"] = "McjG's blog project";
+    ViewData["HeaderText"] = "Welcome to my example blog project!";
 }
 
-<h1 class="display-1">Posts:</h1>
 @foreach (var post in Model)
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(post => post.AuthorName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(post => post.CreatedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(post => post.CategoryName)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>
-                    @Html.DisplayFor(modelItem => post.AuthorName)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => post.CreatedDate)
-                </th>
-                <th>
-                    @Html.DisplayFor(modelItem => post.CategoryName)
-                </th>
-            </tr>
-        </tbody>
-    </table>
-    <h1>@Html.DisplayFor(modelItem => post.Title)</h1>
-    <p class="text-justify">@Html.DisplayFor(modelItem => post.Content)</p>
-    @Html.ActionLink("View post", "ViewPost", "Post", new { postId = post.Id })
-    <span class="d-block p-2 bg-primary text-white mb-5"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    <a href="Post/ViewPost?postId=@post.Id">
+                        <h2 class="post-title">
+                            @post.Title
+                        </h2>
+
+                        <h3 class="post-subtitle">
+                            <strong><em>Posted by @post.AuthorName on @post.CreatedDate.ToString("d/M/yyyy")</em></strong>
+                        </h3>
+
+                        <h4 class="post-subtitle">
+                            <em style="margin-bottom: 50px">Categry: @post.CategoryName</em>
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
 }

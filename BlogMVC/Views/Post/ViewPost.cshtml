@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = $"{ Model.Title }";
+    ViewData["Image"] = "post-bg.jpg";
+    ViewData["Header"] = Model.Title;
+    ViewData["HeaderText"] = $"Posted by { Model.AuthorName } on { Model.CreatedDate.ToString("d/M/yyyy") }";
 }
 
 <div>
