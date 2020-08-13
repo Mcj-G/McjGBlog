@@ -1,22 +1,24 @@
 ﻿@model BlogMVC.Models.DisplayModels.PostDisplayModel
 
 @{
-    ViewData["Title"] = $"{ Model.Title }";
+    ViewData["Title"] = Model.Title;
     ViewData["Image"] = "post-bg.jpg";
     ViewData["Header"] = Model.Title;
     ViewData["HeaderText"] = $"Posted by { Model.AuthorName } on { Model.CreatedDate.ToString("d/M/yyyy") }";
 }
 
-<div>
-    <h2>@Model.Title</h2>
+<div class="container">
     <p>Category: @Html.DisplayFor(model => model.CategoryName)</p>
     <hr />
 
-    <div class="font-weight-normal">
-        @Html.DisplayFor(model => model.Content)
+    <div class="row">
+        <div class="font-weight-normal">
+            @Html.DisplayFor(model => model.Content)
+        </div>
     </div>
 
     <hr />
+
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AuthorName)
@@ -31,51 +33,49 @@
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
     </dl>
+
     <div>
-        <a asp-controller="Home" asp-action="Index">Back to Main Page</a> |
-        @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id })
+        <button type="button" class="btn btn-outline-dark" style="margin-right: 30px" onclick="location.href='@Url.Action("Index", "Home")'">Back to Main Page</button>
+        @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id }, new { @class = "btn btn-outline-dark", @style = "margin-right: 30px" })
         @if (ViewContext.HttpContext.User.IsInRole("Admin"))
         {
             <div>
-                @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }) |
-                @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');" })
+                @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }, new { @class = "btn btn-outline-dark", @style = "margin-right: 30px" })
+                @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');", @class = "btn btn-outline-dark" })
             </div>
         }
-
     </div>
-    <h4>Comments:</h4>
+</div>
+
+<hr />
+
+<div class="container-sm">
+    <h4 class="text-center"><em>Comments:</em></h4>
     @foreach (var comment in Model.Comments)
     {
-        <span class="d-block p-2 bg-primary text-white mb-5"></span>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(modelItem => comment.UserName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(modelItem => comment.CreatedDate)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>
-                        @Html.DisplayFor(modelItem => comment.UserName)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => comment.CreatedDate)
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-        <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+        <div class="container border" style="margin: 30px">
+            <dl class="row mx-auto">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => comment.UserName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => comment.UserName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => comment.CreatedDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => comment.CreatedDate)
+                </dd>
+            </dl>
+
+            <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+        </div>
         @if (ViewContext.HttpContext.User.IsInRole("Admin"))
         {
             @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
         }
     }
-    <span class="d-block p-2 bg-primary text-white mb-5"></span>
 
 </div>
 
