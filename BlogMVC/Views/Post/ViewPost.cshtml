@@ -39,10 +39,8 @@
         @Html.ActionLink("Comment", "CreateComment", "Comment", new { postId = Model.Id }, new { @class = "btn btn-outline-dark", @style = "margin-right: 30px" })
         @if (ViewContext.HttpContext.User.IsInRole("Admin"))
         {
-            <div>
-                @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }, new { @class = "btn btn-outline-dark", @style = "margin-right: 30px" })
-                @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');", @class = "btn btn-outline-dark" })
-            </div>
+            @Html.ActionLink("Edit", "EditPost", "Post", new { postId = Model.Id }, new { @class = "btn btn-outline-dark", @style = "margin-right: 30px" })
+            @Html.ActionLink("Delete Post", "DeletePost", "Post", new { postId = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this post?');", @class = "btn btn-outline-dark" })
         }
     </div>
 </div>
@@ -53,28 +51,30 @@
     <h4 class="text-center"><em>Comments:</em></h4>
     @foreach (var comment in Model.Comments)
     {
-        <div class="container border" style="margin: 30px">
-            <dl class="row mx-auto">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(modelItem => comment.UserName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(modelItem => comment.UserName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(modelItem => comment.CreatedDate)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(modelItem => comment.CreatedDate)
-                </dd>
-            </dl>
+<div class="container border" style="margin: 30px">
+    <dl class="row mx-auto">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(modelItem => comment.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => comment.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(modelItem => comment.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(modelItem => comment.CreatedDate)
+        </dd>
+    </dl>
 
-            <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
-        </div>
-        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
-        }
+    <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        <hr />
+        @Html.ActionLink("Delete Comment", "DeleteComment", "Comment", new { commentId = comment.Id }, new { onclick = "return confirm('Are you sure you wish to delete this comment?');" })
+    }
+</div>
+        
     }
 
 </div>
