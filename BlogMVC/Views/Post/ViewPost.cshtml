@@ -13,7 +13,7 @@
 
     <div class="row">
         <div class="font-weight-normal">
-            @Html.DisplayFor(model => model.Content)
+            @Html.Raw(Model.Content)
         </div>
     </div>
 
@@ -67,7 +67,7 @@
         </dd>
     </dl>
 
-    <p class="text-justify">@Html.DisplayFor(modelItem => comment.Content)</p>
+    <p class="text-justify">@Html.Raw(comment.Content)</p>
     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
         <hr />

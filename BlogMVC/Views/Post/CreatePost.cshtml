@@ -1,43 +1,38 @@
 ﻿@model BlogMVC.Models.PostModel
 
 @{
-    ViewData["Title"] = "CreatePost";
+    ViewData["Title"] = "Create Post";
+    ViewData["Image"] = "comment-bg.jpg";
+    ViewData["Header"] = "Create new post";
 }
 
-<h1>CreatePost</h1>
-
-<h4>PostModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-controller="Post" asp-action="CreatePost">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <textarea asp-for="Content" class="form-control"></textarea>
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class="form-control">
-                    @foreach (var category in Model.CategoryList)
-	                {
-		                <option value="@category.Id">@category.Name</option>
-	                }
-                </select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-controller="Post" asp-action="CreatePost">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-</div>
+    <div class="form-group">
+        <label asp-for="Content" class="control-label"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label"></label>
+        <select asp-for="CategoryId" class="form-control">
+            @foreach (var category in Model.CategoryList)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
 
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Main Page</a>

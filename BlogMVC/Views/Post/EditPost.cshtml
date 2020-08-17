@@ -1,13 +1,10 @@
 ﻿@model BlogMVC.Models.DisplayModels.PostDisplayModel
 
 @{
-    ViewData["Title"] = "EditPost";
+    ViewData["Title"] = "Edit Post";
+    ViewData["Image"] = "comment-bg.jpg";
+    ViewData["Header"] = "Edit post";
 }
-
-<h1>EditPost</h1>
-
-<h4>PostDisplayModel</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="EditPost">
@@ -31,7 +28,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" asp-controller="Home">Back to Main page</a>
+    <a asp-action="Index" asp-controller="Home">Back to Main Page</a>
 </div>
 
 @section Scripts {

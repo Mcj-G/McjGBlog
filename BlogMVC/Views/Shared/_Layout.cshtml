@@ -20,6 +20,10 @@
     <!-- Custom styles for this template -->
     <link href="~/css/clean-blog.min.css" rel="stylesheet">
 
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/cyam14adxr8s1xd2xyyctsqp58chdzk51eyjeed2ayvpp8y8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
 </head>
 <body>
 
@@ -32,21 +36,21 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-baseline">
                     <li class="nav-item">
-                        <a class="nav-link text-light" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Index">Home Page</a>
+                        <a class="nav-link text-dark" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Index">Home Page</a>
                     </li>
                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-light" style="font-size: 20px" asp-area="" asp-controller="Post" asp-action="CreatePost">Create Post</a>
+                            <a class="nav-link text-dark" style="font-size: 20px" asp-area="" asp-controller="Post" asp-action="CreatePost">Create Post</a>
                         </li>
                     }
                     <li class="nav-item">
-                        <a class="nav-link text-light" style="font-size: 20px" asp-area="" asp-controller="User" asp-action="ManageUserData">User</a>
+                        <a class="nav-link text-dark" style="font-size: 20px" asp-area="" asp-controller="User" asp-action="ManageUserData">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-dark" style="font-size: 20px" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <partial name="_LoginPartial" />
                 </ul>
@@ -84,7 +88,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <ul class="list-inline text-center">
                         <li class="list-inline-item">
-                            <a href="#">
+                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
                                 <span class="fa-stack fa-lg">
                                     <i class="fas fa-circle fa-stack-2x"></i>
                                     <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -92,7 +96,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                                 <span class="fa-stack fa-lg">
                                     <i class="fas fa-circle fa-stack-2x"></i>
                                     <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -100,7 +104,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">
+                            <a href="https://www.github.com/" target="_blank" rel="noopener noreferrer">
                                 <span class="fa-stack fa-lg">
                                     <i class="fas fa-circle fa-stack-2x"></i>
                                     <i class="fab fa-github fa-stack-1x fa-inverse"></i>

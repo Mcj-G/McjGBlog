@@ -1,7 +1,10 @@
 ﻿@model BlogMVC.Models.UserModel
 
 @{
-    ViewData["Title"] = "ManageUserData";
+    ViewData["Title"] = "Manage User Data";
+    ViewData["Image"] = "about-bg.jpg";
+    ViewData["Header"] = "McjG's blog project";
+    ViewData["HeaderText"] = "Welcome to my example blog project!";
 }
 
 @{string name = "";
@@ -14,10 +17,6 @@
         name = "User";
     }
 }
-<h1>ManageUserData</h1>
-
-<h4>UserModel</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="ManageUserData">
