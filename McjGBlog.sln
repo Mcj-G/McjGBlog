@@ -5,14 +5,9 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLData", "SQLData\SQLData.sqlproj", "{E636F524-AA8E-4045-B0CC-9322594E3976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogMVC", "BlogMVC\BlogMVC.csproj", "{9FC92E44-E28C-49F5-BC2E-F17A4EE2A59C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogMVC", "BlogMVC\BlogMVC.csproj", "{9FC92E44-E28C-49F5-BC2E-F17A4EE2A59C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Library", "Blog.Library\Blog.Library.csproj", "{D85E8582-0E6D-4013-B6F5-B51210F92876}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D7D4490-575E-4DE4-AA23-AF8DEF408DAD}"
-	ProjectSection(SolutionItems) = preProject
-		WorkPlan.txt = WorkPlan.txt
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Library", "Blog.Library\Blog.Library.csproj", "{D85E8582-0E6D-4013-B6F5-B51210F92876}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
