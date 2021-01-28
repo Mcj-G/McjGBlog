@@ -10,4 +10,6 @@ Welcome! Here is my project - blog engine that I made as my first ever .NET core
 - Editing user name
 
 ## What it still needs:
-- Refactoring controllers to utilize its features - too many commands are accessed via the HttpPost route
+- Refactoring controllers to utilize its features
+- Adding more user info and functionality to modify account data by the user
+- Visual tweaks
