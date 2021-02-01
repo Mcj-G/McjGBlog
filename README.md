@@ -12,4 +12,5 @@ Welcome! Here is my project - blog engine that I made as my first ever .NET core
 ## What it still needs:
 - Refactoring controllers to utilize its features
 - Adding more user info and functionality to modify account data by the user
+- Adding full register/login functionality with real email confirmation and external authentication services
 - Visual tweaks
